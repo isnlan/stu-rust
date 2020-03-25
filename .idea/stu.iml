@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/multi-server/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/multi-server/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/multi-server/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/multi-server/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/ed25519/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ed25519/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ed25519/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/ed25519/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/grpc/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grpc/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grpc/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/grpc/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/grpc-demo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grpc-demo/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grpc-demo/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/grpc-demo/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/grammar/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grammar/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grammar/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/grammar/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/buildgit/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/buildgit/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/buildgit/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/buildgit/benches" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/buildgit/target" />
+      <excludeFolder url="file://$MODULE_DIR$/ed25519/target" />
+      <excludeFolder url="file://$MODULE_DIR$/grammar/target" />
+      <excludeFolder url="file://$MODULE_DIR$/grpc-demo/target" />
+      <excludeFolder url="file://$MODULE_DIR$/grpc/target" />
+      <excludeFolder url="file://$MODULE_DIR$/multi-server/target" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Bundled Protobuf Distribution" level="application" />
+  </component>
+</module>
