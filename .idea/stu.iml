@@ -30,12 +30,17 @@
       <sourceFolder url="file://$MODULE_DIR$/buildgit/examples" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/buildgit/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/buildgit/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/support/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/support/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/support/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/support/benches" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/buildgit/target" />
       <excludeFolder url="file://$MODULE_DIR$/ed25519/target" />
       <excludeFolder url="file://$MODULE_DIR$/grammar/target" />
       <excludeFolder url="file://$MODULE_DIR$/grpc-demo/target" />
       <excludeFolder url="file://$MODULE_DIR$/grpc/target" />
       <excludeFolder url="file://$MODULE_DIR$/multi-server/target" />
+      <excludeFolder url="file://$MODULE_DIR$/support/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
