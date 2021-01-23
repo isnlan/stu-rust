@@ -7,4 +7,5 @@ members = [
     "grammar",
     "buildgit",
     "support",
+    "http-server",
 ]
