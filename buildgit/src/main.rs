@@ -3,7 +3,6 @@ pub mod built_info {
 }
 
 fn main() {
-
     println!(
         "This is version {}{}, built for {} by {}.",
         built_info::PKG_VERSION,
@@ -23,4 +22,3 @@ fn main() {
         println!(" and I'm currently not executing on one!");
     }
 }
-

@@ -6,7 +6,7 @@ trait Print {
 
 #[derive(Clone)]
 struct Stub {
-    svr : Arc<Option<Box<dyn Print>>>,
+    svr: Arc<Option<Box<dyn Print>>>,
 }
 
 impl Stub {
@@ -22,13 +22,15 @@ struct Server {
 
 impl Print for Server {
     fn print(&self) {
-         println!("server");
+        println!("server");
     }
 }
 
 fn main() {
-    let mut svr = Server{
-        stub: Stub {svr: Arc::new(None)}
+    let mut svr = Server {
+        stub: Stub {
+            svr: Arc::new(None),
+        },
     };
 
     svr.stub.svr = Arc::new(Some(Box::new(svr.clone())))

@@ -1,7 +1,7 @@
-use std::sync::Arc;
-use std::cell::RefCell;
 use ethereum_types::Address;
 use ethereum_types::U256;
+use std::cell::RefCell;
+use std::sync::Arc;
 
 fn main() {
     let db = Arc::new(cita_vm::state::MemoryDB::new(false));
@@ -36,7 +36,7 @@ fn main() {
     let context = cita_vm::evm::Context::default();
     let config = cita_vm::Config {
         block_gas_limit: 8000000,
-        check_nonce: false
+        check_nonce: false,
     };
 
     let tx = cita_vm::Transaction {
@@ -49,7 +49,7 @@ fn main() {
         input: hex::decode(
             "60fe47b1000000000000000000000000000000000000000000000000000000000000002a",
         )
-            .unwrap(),
+        .unwrap(),
     };
     let r = cita_vm::exec(
         block_data_provider.clone(),
@@ -58,8 +58,7 @@ fn main() {
         config.clone(),
         tx,
     )
-        .unwrap();
-
+    .unwrap();
 
     println!("-----------------");
 
@@ -79,6 +78,6 @@ fn main() {
         config.clone(),
         tx1,
     )
-        .unwrap();
+    .unwrap();
     println!("return={:?}", r); // 42 is outputed
 }

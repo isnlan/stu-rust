@@ -1,12 +1,12 @@
-use crate::helloworld_grpc::{Greeter, create_greeter};
 use crate::helloworld::{HelloReply, HelloRequest};
+use crate::helloworld_grpc::{create_greeter, Greeter};
 use std::io::Read;
 use std::sync::Arc;
 use std::{io, thread};
 
 use futures::sync::oneshot;
 use futures::Future;
-use grpcio::{Environment, RpcContext, ServerBuilder, UnarySink, ResourceQuota, ChannelBuilder};
+use grpcio::{ChannelBuilder, Environment, ResourceQuota, RpcContext, ServerBuilder, UnarySink};
 
 mod helloworld;
 mod helloworld_grpc;
@@ -29,7 +29,6 @@ impl Greeter for GreeterService {
 fn main() {
     let env = Arc::new(Environment::new(8));
     let service = create_greeter(GreeterService);
-
 
     let quota = ResourceQuota::new(Some("HelloServerQuota")).resize_memory(1024 * 1024);
     let ch_builder = ChannelBuilder::new(env.clone()).resource_quota(quota);
@@ -54,4 +53,3 @@ fn main() {
     let _ = rx.wait();
     let _ = server.shutdown().wait();
 }
-

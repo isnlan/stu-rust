@@ -1,10 +1,10 @@
-use actix_web::{get, post, web, App, HttpServer, Responder, HttpRequest,  HttpResponse};
-use std::collections::HashMap;
-use std::sync::{Mutex, Arc};
-use serde::{Deserialize, Serialize};
-use actix::{Actor, SyncContext, Addr, SyncArbiter, Message, Handler};
+use actix::{Actor, Addr, Handler, Message, SyncArbiter, SyncContext};
+use actix_web::{get, post, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 use futures::TryFutureExt;
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::io::Error;
+use std::sync::{Arc, Mutex};
 
 #[macro_use]
 extern crate actix_web;
@@ -22,7 +22,9 @@ struct DB {
 
 impl DB {
     fn new() -> Self {
-        Self{inner:Arc::new(Mutex::new(HashMap::new()))}
+        Self {
+            inner: Arc::new(Mutex::new(HashMap::new())),
+        }
     }
 }
 
@@ -33,7 +35,11 @@ impl Actor for DB {
 impl Handler<UserRegisterRequest> for DB {
     type Result = Result<String, Error>;
 
-    fn handle(&mut self, UserRegisterRequest{username, password}: UserRegisterRequest, ctx: &mut Self::Context) -> Self::Result {
+    fn handle(
+        &mut self,
+        UserRegisterRequest { username, password }: UserRegisterRequest,
+        ctx: &mut Self::Context,
+    ) -> Self::Result {
         let mut db = self.inner.lock().unwrap();
         db.insert(username.clone(), password);
         Ok(username)
@@ -42,16 +48,14 @@ impl Handler<UserRegisterRequest> for DB {
 
 #[derive(Clone)]
 struct State {
-    pub inner :Addr<DB>
+    pub inner: Addr<DB>,
 }
 
 impl State {
     fn new() -> Self {
         let db = DB::new();
-        let state = SyncArbiter::start(1, move || {
-            db.clone()
-        });
-        Self{inner: state}
+        let state = SyncArbiter::start(1, move || db.clone());
+        Self { inner: state }
     }
 
     fn get(&self) -> &Addr<DB> {
@@ -75,23 +79,26 @@ impl Message for UserRegisterRequest {
 }
 
 #[post("/api/user/register")]
-async fn register_user(req: web::Json<UserRegisterRequest>, state: web::Data<State>) -> impl Responder {
+async fn register_user(
+    req: web::Json<UserRegisterRequest>,
+    state: web::Data<State>,
+) -> impl Responder {
     let state = state.get();
     let res = state.send(req.into_inner()).await.unwrap().unwrap();
 
     res
 }
 
-
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let state = State::new();
-    HttpServer::new(move|| App::new()
-        .data(state.clone())
-        .service(pong)
-        .service(register_user)
-    )
-        .bind("0.0.0.0:9080")?
-        .run()
-        .await
+    HttpServer::new(move || {
+        App::new()
+            .data(state.clone())
+            .service(pong)
+            .service(register_user)
+    })
+    .bind("0.0.0.0:9080")?
+    .run()
+    .await
 }
