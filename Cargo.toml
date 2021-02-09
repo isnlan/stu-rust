@@ -8,4 +8,5 @@ members = [
     "buildgit",
     "support",
     "http-server",
+    "evm",
 ]
