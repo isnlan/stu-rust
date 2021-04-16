@@ -1,12 +1,13 @@
 [workspace]
 
 members = [
-    "multi-server",
-    "ed25519",
-    "grpc",
-    "grammar",
-    "buildgit",
-    "support",
-    "http-server",
-    "evm",
+#    "multi-server",
+#    "ed25519",
+#    "grpc",
+#    "grammar",
+#    "buildgit",
+#    "support",
+#    "http-server",
+#    "evm",
+    "stu"
 ]

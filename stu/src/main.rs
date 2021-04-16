@@ -1,28 +1,49 @@
-use std::fmt::Display;
-
-fn pt1(val : impl Display) {
-    println!("p1 {}", val);
+trait Speak: Sync + Clone + Send + 'static {
+    fn speak(&self);
 }
 
-fn pt2(val : &dyn Display) {
-    println!("p2 {}", val);
+#[derive(Clone)]
+struct  Person {
+    name: String
 }
 
-struct Person(String);
 
-
-fn main() {
-    let v = vec![0, 1,2,3,4];
-    let vr = &v;
-    let mut cs = vec![];
-    for n in 0..5 {
-        let c = std::thread::spawn( move ||{
-            println!("{}", vr[n]);
-        });
-        cs.push(c);
+impl Speak for Person {
+    fn speak(&self) {
+        println!("my name {:?}", self.name);
     }
+}
 
-    for c in cs {
-        c.join().unwrap();
+struct  Zone<S: Speak> {
+    speaker: S,
+}
+
+impl <S:Speak>Zone<S> {
+    async fn run(&self) {
+        let s = self.clone();
+        tokio::spawn(async move {
+            loop {
+
+            }
+        }).await.unwrap();
     }
+}
+
+#[cfg(test)]
+mod tests{
+    use crate::{Person, Zone};
+    use std::thread::sleep;
+    use std::time::Duration;
+
+    #[actix_rt::test]
+    async fn is_work(){
+        let p = Person{name:"s1".to_string()};
+        let z = Zone{speaker: p};
+        z.run().await;
+        sleep(Duration::from_secs(2))
+    }
+}
+
+
+fn main()  {
 }
